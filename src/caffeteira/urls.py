@@ -14,7 +14,7 @@ urlpatterns = [
 Cargar archivos media modo debug
 """
 
-if settings.DEBUIG:
+if settings.DEBUG:
     from django.conf.urls.static import static
 
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
