@@ -8,6 +8,8 @@ urlpatterns = [
     path('', include('core.urls')),
     # path services
     path('services/', include('services.urls')),
+    # path blog
+    path('blog/', include('blog.urls')),
     # url admin
     path('admin/', admin.site.urls),
 ]
