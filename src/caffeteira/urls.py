@@ -6,6 +6,8 @@ urlpatterns = [
 
     # path core
     path('', include('core.urls')),
+    # path services
+    path('services/', include('services.urls')),
     # url admin
     path('admin/', admin.site.urls),
 ]
