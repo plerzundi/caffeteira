@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.core.mail import EmailMessage
 from .forms import ContactForm
 
 
@@ -13,6 +14,17 @@ def contact(request):
             content = request.POST.get('content', '')
 
             # Si sale todo bien enviamos una redireccion
-            return redirect(reverse('contact') + "?ok")
+            email = EmailMessage(
+                "La cafetteira: Nuevo mensaje de contacto",
+                "De {} <{}>\n\nEscribió:\n\n{}".format(name, email, content),
+                "No constestar@inbox.mailtrap.io",
+                ["patriciolerzundi@gmail.com"],
+                reply_to=[email]
+            )
+            try:
+                email.send()
+                return redirect(reverse('contact') + "?ok")
+            except:
+                return redirect(reverse('contact') + "?fail")
 
     return render(request, "contact/contact.html", {"form": contact_form})
