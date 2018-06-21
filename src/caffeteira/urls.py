@@ -10,6 +10,8 @@ urlpatterns = [
     path('services/', include('services.urls')),
     # path blog
     path('blog/', include('blog.urls')),
+    # path pages
+    path('page/', include('pages.urls')),
     # url admin
     path('admin/', admin.site.urls),
 ]
